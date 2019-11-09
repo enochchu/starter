@@ -1,0 +1,16 @@
+{
+  "name": "basic-typescript-workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "author": "Enoch Chu",
+  "license": "ISC",
+  "scripts": {
+    "build-ts": "tsc"
+  },
+  "dependencies": {
+    "jest": "^24.9.0",
+    "typescript": "^3.6.4"
+  }
+}
