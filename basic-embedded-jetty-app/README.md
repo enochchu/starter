@@ -1,0 +1,29 @@
+README.md
+=========
+
+Task List
+---------
+
+#### Things to do
+##### Configuration
+- [ ] Documentation
+  - [ ] Readme needs to be developed.
+    - [ ] Concept
+      - [ ] Requirements
+
+#### Planning
+- [ ] Persistence Layer
+  - [ ] Data access Layer
+- [ ] Service Layer
+  - [ ] CRUD
+      - [ ] Create
+      - [ ] Read
+      - [ ] Update
+      - [ ] Delete
+   - [ ] REST Controllers
+      - [ ] Create
+      - [ ] Read
+      - [ ] Update
+      - [ ] Delete
+- [ ] Presentation Layer
+- [ ] Configuration
