@@ -1,0 +1,5 @@
+/.idea/
+/build/
+/basic_python_app.egg-info/
+/dist/
+/venv/
