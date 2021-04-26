@@ -1,21 +1,15 @@
 Starter
 =======
 
-The objective of this repository is:
+The goal of this repository is:
   1. to shorten development set up and configuration time for projects.
   2. provide learning experience by a combination of comments and reading the code.
 
-File structure and Naming scheme
---------------------------------
+How are things organized here!
+------------------------------
 ```
-`- basic-{language}-*   - Starter packages
-`- README.md            - Documentation that provides the concept 
-                          of this repository
+`- basics
+  `- basic-{language/stack}-*  - Starter packages
+`- examples                    - Example projects with simple logic to show the art of possible
+`- README.md                   - Just your usual README.md
 ```
-
-Task List
----------
-- [ ] Develop out the README.md
-- [ ] Develop concept further -
-  - [ ] Is this repo just code? Can it be a starter kit for documentation?
-  - [ ] Who is the target auidence?
