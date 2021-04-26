@@ -13,3 +13,8 @@ How are things organized here!
 `- examples                    - Example projects with simple logic to show the art of possible
 `- README.md                   - Just your usual README.md
 ```
+
+Contribute
+----------
+
+Feel free to message me by pull request and contribute if you want to!
