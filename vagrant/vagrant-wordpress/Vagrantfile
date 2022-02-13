@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # Box Setting
+  config.vm.box = "ubuntu/focal64"  
+
+  # Provider Setting
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 4
+  end
+
+  # Network Settings
+  config.vm.network "forwarded_port", guest: 80, host: 7070
+  config.vm.network "forwarded_port", guest: 3306, host: 3309
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+  # Folder Settings
+  config.vm.synced_folder "./data/var/www/html", "/var/www/html"
+
+  # Bootstrap script for configuring VM
+  config.vm.provision :shell, path: "bootstrap.sh"
+end
