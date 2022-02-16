@@ -15,7 +15,7 @@ apt-get -y dist-upgrade
 apt-get -y install apache2
 
 # Install PHP5
-apt-get -y install php php-cli php-mysql php-fpm
+apt-get -y install php php-cli libapache2-mod-php7.4 php7.4-fpm
 
 # Restart Apache
 systemctl restart apache2
@@ -24,7 +24,7 @@ systemctl restart apache2
 MYSQL_ROOT_PASSWORD=secret
 
 MYSQL_WP_USER=wordpress
-MYSQL_WP_PASSWORD=secret
+MYSQL_WP_PASSWORD=s3cr3t
 WP_DB_NAME=wordpress
 
 debconf-set-selections <<< "mysql-server mysql-server/root_password password ${MYSQL_ROOT_PASSWORD}"
@@ -32,13 +32,11 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 apt-get -y install mysql-server
 
 # Create WordPress DB User
-mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE ${WP_DB_NAME}"
-mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "grant all privileges on ${WP_DB_NAME}.* to '${MYSQL_WP_USER}'@'localhost' identified by '${MYSQL_WP_PASSWORD}'"
+mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE ${WP_DB_NAME} character set utf8mb4"
+mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE USER '${MYSQL_WP_USER}'@'localhost' IDENTIFIED BY '${MYSQL_WP_PASSWORD}'"
 
-systemctl restart mysqld
+systemctl restart mysql
 
-# Download and set up latest Wordpress
-wget https://wordpress.org/latest.tar.gz
-tar -xvf latest.tar.gz
-rm -R latest.tar.gz
-mv wordpress /var/www/html/
+mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL PRIVILEGES ON ${WP_DB_NAME}.*  TO '${MYSQL_WP_USER}'@'localhost'"
+
+systemctl restart mysql
