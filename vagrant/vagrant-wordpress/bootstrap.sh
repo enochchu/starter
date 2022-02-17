@@ -14,11 +14,11 @@ apt-get -y dist-upgrade
 # Install Apache
 apt-get -y install apache2
 
-# Install PHP5
-apt-get -y install php php-cli libapache2-mod-php7.4 php7.4-fpm
+# Install PHP
+apt-get -y install php libapache2-mod-php php-mysql
 
 # Restart Apache
-systemctl restart apache2
+service apache2 restart
 
 # Install MySQL
 MYSQL_ROOT_PASSWORD=secret
@@ -39,4 +39,4 @@ systemctl restart mysql
 
 mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL PRIVILEGES ON ${WP_DB_NAME}.*  TO '${MYSQL_WP_USER}'@'localhost'"
 
-systemctl restart mysql
+service mysql restart
