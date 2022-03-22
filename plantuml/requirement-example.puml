@@ -1,0 +1,79 @@
+@startuml
+	package "Business Requirements" {
+		[Business Requirement #1]
+	}
+
+	package "User Requirements" {
+		[User Requirement #1]
+		[User Requirement #2]
+		[User Requirement #3]
+	}
+
+	package "System Requirements" {
+		[System Requirement #1]
+		[System Requirement #2]
+		[System Requirement #3]
+		[System Requirement #4]
+		[System Requirement #5]
+		[System Requirement #6]
+	}
+
+	package "Test Cases" {
+		component BBDTestCase1 [
+			BBD Test Case #1
+			<code>
+			Feature: System Requirement #1
+
+			Background: Business Requirement #1
+
+			Scenario: Dr. Bill posts to his own blog
+		    	Given I am logged in as Dr. Bill
+		    	When I try to post to "Expensive Therapy"
+		    	Then I should see "Your article was published."
+		]
+
+		component BBDTestCase2 [
+			BBD Test Case #2
+			<code>
+			Feature: System Requirement #1
+
+			Background: Business Requirement #1
+
+			Scenario: Dr. Bill posts to his own blog
+		    	Given I am logged in as Dr. Bill
+		    	When I try to post to "Expensive Therapy"
+		    	Then I should see "Your article was published."
+		]
+
+		component BBDTestCase3 [
+			BBD Test Case #3
+			<code>
+			Feature: System Requirement #1
+
+			Background: Business Requirement #1
+
+			Scenario: Dr. Bill posts to his own blog
+		    	Given I am logged in as Dr. Bill
+		    	When I try to post to "Expensive Therapy"
+		    	Then I should see "Your article was published."
+		]
+	}
+
+	[Business Requirement #1] --> [User Requirement #1] : derive
+	[Business Requirement #1] --> [User Requirement #2] : derive
+	[Business Requirement #1] --> [User Requirement #3] : derive
+
+
+	[User Requirement #1] --> [System Requirement #1] : derive
+	[User Requirement #1] --> [System Requirement #2] : derive
+	[User Requirement #1] --> [System Requirement #3] : derive
+
+	[User Requirement #2] --> [System Requirement #4] : derive
+	[User Requirement #2] --> [System Requirement #5] : derive
+	[User Requirement #2] --> [System Requirement #6] : derive
+
+	[System Requirement #1] --> [BBDTestCase1] : test and verify
+	[System Requirement #2] --> [BBDTestCase2] : test and verify
+	[System Requirement #3] --> [BBDTestCase3] : test and verify
+
+@enduml
