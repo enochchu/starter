@@ -1,0 +1,111 @@
+@startuml
+	package "Business Requirements" {
+		[Business Requirement #1]
+	}
+
+	package "User Requirements" {
+		[User Requirement #1]
+		[User Requirement #2]
+		[User Requirement #3]
+	}
+
+	package "System Requirements" {
+		[System Requirement #1]
+		[System Requirement #2]
+		[System Requirement #3]
+		[System Requirement #4]
+		[System Requirement #5]
+		[System Requirement #6]
+	}
+
+	package "Test Cases" {
+		component BBDTestCase1 [
+			Given-When-Then (Gherkin) Style Use Case
+			<code>
+			Feature: System Requirement #1
+
+			Background: User wants to write articles and publish a blog.
+
+			Scenario: User posts a blog in his blog
+		    	Given User is logged in as an author
+				  and User has content he wants to publish into his blog
+		    	When I login in successfully
+		    	Then I should see a "Create Post" from a toolbar and click on it
+				and then I should see a page where I can create a blog post
+				and then I should be able to enter a title for the blog post
+				and then I should be able to enter some content for the blog post
+				and then I should be able to click a publish button to publish my post online
+				and then I should be able to see my publish post
+				
+		]
+
+		component BBDTestCaseImpl1 [
+			<code>
+			public class UserCreatePostTestCase {
+				// setup, teardown
+
+				@Given('User is logged in as an author')
+				public void testLoginUser() {
+					// ...
+					assertTrue(user.isLoggedIn());
+					assertEquals(user.role, "author");
+				}
+
+				@When('User is logged in')
+				public void testPrepareContentData() {
+					// ...
+				}
+
+				@Then('I should see a "Create Post" from a toolbar and click it')
+				public void testShouldBeAbleToClickOnCreatePostInToolbar() {
+					// selenum xpath magic voodoo and assert
+				}
+
+				@Then('I should see a page where I can create a blog post')
+				public void testUserShouldBeInCreateBlogPostPage() {
+					// selenum xpath magic voodoo and assert
+				}
+
+
+				@Then('I should be able to enter a title for the blog post')
+				public void testUserShouldBeAbleToEnterATitle() {
+					// selenum xpath magic voodoo and assert
+				}
+
+				@Then('I should be able to enter some content for the blog post')
+				public void testUserShouldBeAbleToEnterContent() {
+					// selenum xpath magic voodoo and assert
+				}
+
+				@Then('I should be able to click a publish button to publish my post online')
+				public void testUserShouldBeAbleToFindandClickonPublish() {
+					// selenum xpath magic voodoo and assert
+				}
+
+				@Then('I should be able to see my publish post')
+				public void testUserShouldBeAbleToSeeNewPost() {
+					// selenum xpath magic voodoo and assert
+				}
+			}
+		]
+	}
+
+
+	[Business Requirement #1] --> [User Requirement #1] : derive
+	[Business Requirement #1] --> [User Requirement #2] : derive
+	[Business Requirement #1] --> [User Requirement #3] : derive
+
+
+	[User Requirement #1] --> [System Requirement #1] : derive
+	[User Requirement #1] --> [System Requirement #2] : derive
+	[User Requirement #1] --> [System Requirement #3] : derive
+
+	[User Requirement #2] --> [System Requirement #4] : derive
+	[User Requirement #2] --> [System Requirement #5] : derive
+	[User Requirement #2] --> [System Requirement #6] : derive
+
+	[System Requirement #1] --> [BBDTestCase1] : test and verify
+	[User Requirement #1] --> [BBDTestCase1] : test and verify
+
+	[BBDTestCase1] --> [BBDTestCaseImpl1] : derive
+@enduml
