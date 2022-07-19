@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANT_API_VERSION = 2
+
+Vagrant.configure(VAGRANT_API_VERSION) do |config|
+  config.ssh.forward_agent = true
+
+  # Box Setting
+  config.vm.box = "ubuntu/focal64"  
+
+  # Provider Setting
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 1
+    vb.name = "ubuntu elasticsearch"
+  end
+
+  config.vm.network "forwarded_port", guest: 9200, host: 9200
+  config.vm.network "forwarded_port", guest: 5601, host: 5601
+
+  # Folder Settings
+  # config.vm.synced_folder "./data/var/www/html", "/var/www/html"
+  config.vm.synced_folder "./data", "/data"
+
+  # Bootstrap script for configuring VM
+  config.vm.provision :shell, path: "bootstrap.sh"
+end
