@@ -1,3 +1,3 @@
-from enoch.enoch import Enoch
+from .add import add
 
-__all__ = [Enoch]
+__ALL__ = [ add ]
